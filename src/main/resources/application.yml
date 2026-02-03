@@ -37,4 +37,7 @@ server:
 
 
 acp:
+  postgres: ${ACP_POSTGRES}
+  s3: ${ACP_S3}
+  dynamodb: ${ACP_DYNAMODB}
   # ilp-endpoint: https://ilp-rest-2025-all-assigned.azurewebsites.net/ABC
