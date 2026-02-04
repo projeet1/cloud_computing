@@ -3,11 +3,18 @@ package uk.ac.ed.inf.acpTutorial;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(
+		classes = AcpApplication.class,
+		properties = {
+				"ACP_POSTGRES=jdbc:postgresql://dummy:5432/acp",
+				"ACP_S3=http://dummy:4566",
+				"ACP_DYNAMODB=http://dummy:4566",
+				"ACP_ILP_ENDPOINT=https://example.com/"
+		}
+)
 class acpTutorialApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
-
 }
