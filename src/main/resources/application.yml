@@ -37,7 +37,7 @@ server:
 
 
 acp:
-  postgres: ${ACP_POSTGRES}
-  s3: ${ACP_S3}
-  dynamodb: ${ACP_DYNAMODB}
-  # ilp-endpoint: https://ilp-rest-2025-all-assigned.azurewebsites.net/ABC
+  postgres: "${ACP_POSTGRES:jdbc:postgresql://localhost:5432/acp}"
+  s3: "${ACP_S3:http://localhost:4566}"
+  dynamodb: "${ACP_DYNAMODB:http://localhost:4566}"
+  ilp: "${ACP_URL_ENDPOINT:${ACP_ILP_ENDPOINT:https://ilp-rest-2025-bvh6e9hschfagrgy.ukwest-01.azurewebsites.net}}"
