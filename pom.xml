@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>uk.ac.ed.inf</groupId>
-	<artifactId>AcpTutorial</artifactId>
+	<artifactId>ACPCSW1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AcpTutorial</name>
-	<description>AcpTutorial</description>
+	<name>AcpCsw</name>
+	<description>AcpCsw</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>

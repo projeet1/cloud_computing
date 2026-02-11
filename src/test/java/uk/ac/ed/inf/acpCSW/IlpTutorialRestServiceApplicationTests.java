@@ -1,4 +1,4 @@
-package uk.ac.ed.inf.acpTutorial;
+package uk.ac.ed.inf.acpCSW;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 				"ACP_ILP_ENDPOINT=https://example.com/"
 		}
 )
-class acpTutorialApplicationTests {
+class acpApplicationTests {
 
 	@Test
 	void contextLoads() {

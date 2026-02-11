@@ -1,11 +1,11 @@
 spring:
   application:
-    name: AcpTutorial
+    name: AcpCsw1
 
 info:
   app:
-    name: AcpTutorial
-    description: This is the ACP Tutorial Rest Service
+    name: AcpCsw1
+    description: This is the ACP Coursework 1 Rest Service
     version: 1.0
 
 management:

@@ -1,4 +1,4 @@
-package uk.ac.ed.inf.acpTutorial;
+package uk.ac.ed.inf.acpCSW;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package uk.ac.ed.inf.acpTutorial.configuration;
+package uk.ac.ed.inf.acpCSW.configuration;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
@@ -6,18 +6,19 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AcpConfig {
-
-    @Value("${ACP_POSTGRES}")
+    @Value("${ACP_POSTGRES:jdbc:postgresql://localhost:5432/acp}")
     private String postgres;
 
-    @Value("${ACP_S3}")
+    @Value("${ACP_S3:http://localhost:4566}")
     private String s3Endpoint;
 
-    @Value("${ACP_DYNAMODB}")
+    @Value("${ACP_DYNAMODB:http://localhost:4566}")
     private String dynamoEndpoint;
 
-    @Value("${ACP_ILP_ENDPOINT}")
+    // prefer ACP_URL_ENDPOINT if present, otherwise ACP_ILP_ENDPOINT, otherwise default
+    @Value("${ACP_URL_ENDPOINT:${ACP_ILP_ENDPOINT:https://ilp-rest-2025-bvh6e9hschfagrgy.ukwest-01.azurewebsites.net}}")
     private String ilpEndpoint;
+
 
     @PostConstruct
     public void logConfig() {
