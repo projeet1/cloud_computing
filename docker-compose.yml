@@ -1,0 +1,27 @@
+name: acp-csw1
+
+services:
+  db:
+    image: postgres:17
+    container_name: postgres-acp
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: acp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  localstack:
+    container_name: localstack-main
+    image: localstack/localstack
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4566:4566"
+      - "127.0.0.1:4510-4559:4510-4559"
+    environment:
+      - SERVICES=s3,dynamodb
+      - DEBUG=0
+    volumes:
+      - "./volume:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

@@ -18,6 +18,11 @@ public class AcpConfig {
     @Value("${acp.ilp}")
     private String ilpEndpoint;
 
+    @Value("${acp.sid}")
+    private String sid;
+
+    public String getSid() { return sid; }
+
     @PostConstruct
     public void logConfig() {
         System.out.println("acp.postgres = " + postgres);

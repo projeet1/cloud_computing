@@ -2,6 +2,14 @@ spring:
   application:
     name: AcpCsw1
 
+  datasource:
+    url: ${acp.postgres}
+    username: "${POSTGRES_USER:postgres}"
+    password: "${POSTGRES_PASSWORD:postgres}"
+    driver-class-name: org.postgresql.Driver
+
+
+
 info:
   app:
     name: AcpCsw1
@@ -41,3 +49,5 @@ acp:
   s3: "${ACP_S3:http://localhost:4566}"
   dynamodb: "${ACP_DYNAMODB:http://localhost:4566}"
   ilp: "${ACP_URL_ENDPOINT:${ACP_ILP_ENDPOINT:https://ilp-rest-2025-bvh6e9hschfagrgy.ukwest-01.azurewebsites.net}}"
+  sid: "${ACP_SID:s2274790}"
+
