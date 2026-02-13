@@ -73,19 +73,19 @@ public class DynamoService {
         try {
             var res = dynamo.scan(ScanRequest.builder().tableName(tableName).build());
             List<Map<String, Object>> out = new ArrayList<>();
-
             for (var item : res.items()) {
                 var contentAttr = item.get("content");
                 if (contentAttr == null || contentAttr.s() == null) continue;
                 out.add(parseJsonObject(contentAttr.s()));
             }
-            return out;
+            return out; // can be empty
         } catch (ResourceNotFoundException e) {
-            return List.of(); // table not found -> controller can return 404
+            return null; // signal missing table
         } catch (Exception e) {
-            return List.of();
+            return List.of(); // degrade safely
         }
     }
+
 
     private Map<String, Object> parseJsonObject(String json) {
         try {

@@ -24,8 +24,7 @@ public class S3Controller {
     public ResponseEntity<List<Map<String, Object>>> getAll(@PathVariable String bucket) {
         try {
             var items = s3Service.getAllJson(bucket);
-            if (items.isEmpty()) return ResponseEntity.status(404).build();
-            return ResponseEntity.ok(items);
+            return ResponseEntity.ok(items); // OK even if empty
         } catch (NoSuchBucketException e) {
             return ResponseEntity.status(404).build();
         } catch (Exception e) {
@@ -33,11 +32,11 @@ public class S3Controller {
         }
     }
 
+
     @GetMapping(value = "/single/s3/{bucket}/{key}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, Object>> getOne(@PathVariable String bucket, @PathVariable String key) {
         try {
             var obj = s3Service.getJson(bucket, key);
-            if (obj.isEmpty()) return ResponseEntity.status(404).build();
             return ResponseEntity.ok(obj);
         } catch (NoSuchKeyException | NoSuchBucketException e) {
             return ResponseEntity.status(404).build();
@@ -45,4 +44,5 @@ public class S3Controller {
             return ResponseEntity.status(404).build();
         }
     }
+
 }
