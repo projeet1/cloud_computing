@@ -31,11 +31,10 @@ public class CopyContentController {
     @PostMapping("/copy-content/dynamo/{table}")
     public ResponseEntity<Void> copyPostgresToDynamo(@PathVariable String table) {
         try {
-            String qualified = acpConfig.getSid() + "." + table;
-            var rows = postgresService.getAllRows(qualified); // list of row-maps
+            var rows = postgresService.getAllRows(table);
+
 
             String dynTable = acpConfig.getSid(); // spec: Dynamo table = SID
-            dynamoService.ensureTableExists(dynTable);
 
             for (var row : rows) {
                 String key = UUID.randomUUID().toString();
@@ -51,11 +50,10 @@ public class CopyContentController {
     @PostMapping("/copy-content/S3/{table}")
     public ResponseEntity<Void> copyPostgresToS3(@PathVariable String table) {
         try {
-            String qualified = acpConfig.getSid() + "." + table;
-            var rows = postgresService.getAllRows(qualified);
+            var rows = postgresService.getAllRows(table);
+
 
             String bucket = acpConfig.getSid(); // spec: bucket = SID
-            s3Service.ensureBucketExists(bucket);
 
             for (var row : rows) {
                 String key = UUID.randomUUID().toString();

@@ -15,7 +15,7 @@ public class PostgresService {
         this.jdbc = jdbc;
     }
 
-    // Allow either: table OR schema.table (SID schema is common in marking)
+    // Allow either: table OR schema.table
     private String sanitizeTable(String table) {
         if (table == null) throw new IllegalArgumentException("table null");
         if (!table.matches("[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)?")) {

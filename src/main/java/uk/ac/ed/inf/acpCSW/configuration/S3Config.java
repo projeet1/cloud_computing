@@ -12,17 +12,30 @@ import java.net.URI;
 
 @Configuration
 public class S3Config {
-
     @Bean
     public S3Client s3Client(AcpConfig acpConfig) {
         return S3Client.builder()
                 .endpointOverride(URI.create(acpConfig.getS3Endpoint()))
+                .forcePathStyle(true)   // match tutor exactly
                 .credentialsProvider(
-                        StaticCredentialsProvider.create(AwsBasicCredentials.create("test", "test"))
+                        StaticCredentialsProvider.create(
+                                AwsBasicCredentials.create("test", "test")
+                        )
                 )
                 .region(Region.US_EAST_1)
-                // LocalStack usually needs path-style addressing
-                .serviceConfiguration(S3Configuration.builder().pathStyleAccessEnabled(true).build())
                 .build();
     }
+
+//    @Bean
+//    public S3Client s3Client(AcpConfig acpConfig) {
+//        return S3Client.builder()
+//                .endpointOverride(URI.create(acpConfig.getS3Endpoint()))
+//                .credentialsProvider(
+//                        StaticCredentialsProvider.create(AwsBasicCredentials.create("test", "test"))
+//                )
+//                .region(Region.US_EAST_1)
+//                // LocalStack needs path-style addressing
+//                .serviceConfiguration(S3Configuration.builder().pathStyleAccessEnabled(true).build())
+//                .build();
+//    }
 }

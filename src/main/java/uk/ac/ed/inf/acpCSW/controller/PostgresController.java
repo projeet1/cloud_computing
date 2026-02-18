@@ -24,8 +24,8 @@ public class PostgresController {
     @GetMapping(value = "/all/postgres/{table}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Map<String, Object>>> getAllFromPostgres(@PathVariable String table) {
         try {
-            String qualified = acpConfig.getSid() + "." + table;
-            var rows = postgresService.getAllRows(qualified);
+//            String qualified = acpConfig.getSid() + "." + table;
+            var rows = postgresService.getAllRows(table);
             return ResponseEntity.ok(rows); // OK even if empty
         } catch (org.springframework.jdbc.BadSqlGrammarException e) {
             return ResponseEntity.status(404).build();

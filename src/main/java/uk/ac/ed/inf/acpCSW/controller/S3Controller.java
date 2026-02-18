@@ -21,7 +21,7 @@ public class S3Controller {
     }
 
     @GetMapping(value = "/all/s3/{bucket}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Map<String, Object>>> getAll(@PathVariable String bucket) {
+    public ResponseEntity<List<Object>> getAll(@PathVariable String bucket) {
         try {
             var items = s3Service.getAllJson(bucket);
             return ResponseEntity.ok(items); // OK even if empty
@@ -34,7 +34,7 @@ public class S3Controller {
 
 
     @GetMapping(value = "/single/s3/{bucket}/{key}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Map<String, Object>> getOne(@PathVariable String bucket, @PathVariable String key) {
+    public ResponseEntity<Object> getOne(@PathVariable String bucket, @PathVariable String key) {
         try {
             var obj = s3Service.getJson(bucket, key);
             return ResponseEntity.ok(obj);
