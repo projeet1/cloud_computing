@@ -3,11 +3,10 @@ spring:
     name: AcpCsw1
 
   datasource:
-    url: ${acp.postgres}
-    username: "${POSTGRES_USER:postgres}"
-    password: "${POSTGRES_PASSWORD:postgres}"
+    url: ${ACP_POSTGRES:jdbc:postgresql://localhost:5432/acp}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
-
 
 
 info:

@@ -113,14 +113,4 @@ public class DynamoService {
     }
 
 
-    private void waitUntilActive(String tableName) {
-        for (int i = 0; i < 40; i++) {
-            try {
-                var res = dynamo.describeTable(DescribeTableRequest.builder().tableName(tableName).build());
-                if (res.table().tableStatus() == TableStatus.ACTIVE) return;
-                Thread.sleep(200);
-            } catch (Exception ignored) {
-            }
-        }
-    }
 }

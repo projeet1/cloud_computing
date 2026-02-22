@@ -46,7 +46,6 @@ public class CopyContentController {
         }
     }
 
-    // Spec uses uppercase S3 in the endpoint path.
     @PostMapping("/copy-content/S3/{table}")
     public ResponseEntity<Void> copyPostgresToS3(@PathVariable String table) {
         try {
