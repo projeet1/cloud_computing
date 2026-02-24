@@ -26,16 +26,4 @@ public class S3Config {
                 .build();
     }
 
-//    @Bean
-//    public S3Client s3Client(AcpConfig acpConfig) {
-//        return S3Client.builder()
-//                .endpointOverride(URI.create(acpConfig.getS3Endpoint()))
-//                .credentialsProvider(
-//                        StaticCredentialsProvider.create(AwsBasicCredentials.create("test", "test"))
-//                )
-//                .region(Region.US_EAST_1)
-//                // LocalStack needs path-style addressing
-//                .serviceConfiguration(S3Configuration.builder().pathStyleAccessEnabled(true).build())
-//                .build();
-//    }
 }
